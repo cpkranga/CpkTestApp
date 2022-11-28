@@ -1,0 +1,50 @@
+
+<form #form="ngForm" (submit)="onSubmit(form)">
+    
+
+
+    <input type="hidden" name="iD"
+    [value]="service.formData.iD" />
+
+    <div class="form-group">
+        <label>Employee Name</label>
+        <input type="text" class="form-control form-control-lg" placeholder="First Name"
+        name="firstName" #firstName="ngModel" [(ngModel)]="service.formData.firstName"
+        />
+    </div>
+  
+    <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Last Name"
+        name="lastName" #lastName="ngModel" [(ngModel)]="service.formData.lastName"
+        >
+    </div>
+    
+    <div class="form-group">
+        <label>Gender</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Gender"
+        name="gender" #gender="ngModel" [(ngModel)]="service.formData.gender"
+        />
+    </div>
+    
+    <div class="form-group">
+        <label>Gender</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Date of Birth"
+        name="dOB" #dOB="ngModel" [(ngModel)]="service.formData.dOB"/>
+    </div>
+    <div class="form-group">
+        <label>Department Name</label>
+        <input type="text" class="form-control form-control-lg" placeholder="DepartmentId"
+        name="departmentId" #departmentId="ngModel" [(ngModel)]="service.formData.departmentId"/>
+    </div>
+    <div class="form-group">
+        <label>Basic Salary</label>
+        <input type="number" class="form-control form-control-lg" placeholder="Basic Salary"
+        name="basicSalary" #basicSalary="ngModel" [(ngModel)]="service.formData.basicSalary"/>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-info btn-lg btn-block" type="submit">SUBMIT</button>
+    </div>
+
+  </form>

@@ -13,9 +13,9 @@ namespace CpkTest.Controllers
     [ApiController]
     public class DepartmentsController : ControllerBase
     {
-        private readonly DepartmentDetailContext _context;
+        private readonly Context _context;
 
-        public DepartmentsController(DepartmentDetailContext context)
+        public DepartmentsController(Context context)
         {
             _context = context;
         }

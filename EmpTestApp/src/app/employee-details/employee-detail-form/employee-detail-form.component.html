@@ -4,7 +4,7 @@
 
 
     <input type="hidden" name="iD"
-    [value]="service.formData.iD" />
+    [value]="service.formData.id" />
 
     <div class="form-group">
         <label>Employee Name</label>
@@ -29,14 +29,32 @@
     
     <div class="form-group">
         <label>Gender</label>
-        <input type="text" class="form-control form-control-lg" placeholder="Date of Birth"
+        <input type="date" class="form-control form-control-lg" placeholder="Date of Birth"
         name="dOB" #dOB="ngModel" [(ngModel)]="service.formData.dOB"/>
     </div>
     <div class="form-group">
         <label>Department Name</label>
-        <input type="text" class="form-control form-control-lg" placeholder="DepartmentId"
-        name="departmentId" #departmentId="ngModel" [(ngModel)]="service.formData.departmentId"/>
+        
+
+        <select class="form-control form-control-lg" [(ngModel)]="selectedDep"  (change)="selectChangeHandler($event)">
+            <option default>Select Department...</option>
+            <option *ngFor="let dep_ of service.depList" [value]="dep_.id">
+                {{dep_.departmentName}}
+            </option>
+            <!-- <select [(ngModel)]="service.selectedObject"> 
+                <select>
+                <option *ngFor="let dpt of service.formData.depList">
+                     {{dpt.departmentName}}
+                 </option>
+              </select>
+              -->
+        </select>   
     </div>
+
+    
+    
+
+
     <div class="form-group">
         <label>Basic Salary</label>
         <input type="number" class="form-control form-control-lg" placeholder="Basic Salary"

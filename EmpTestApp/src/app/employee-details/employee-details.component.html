@@ -7,7 +7,38 @@
         <app-employee-detail-form></app-employee-detail-form>
     </div>
     <div class="col md-6">
-        
+        <table class="table">
+            <thead class="thead-ligh">
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Department</th>
+                    <th>Basic Salary</th>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ed of service.list">
+                    <td>{{ed.firstName}}</td>
+                    <td>{{ed.lastName}}</td>
+                    <td>{{ed.gender}}</td>
+                    <td>{{ed.dOB}}</td>
+                    <td>{{ed.depName}}</td>
+                    <td>{{ed.basicSalary}}</td>
+                    <td>
+                        <i class="fas fa-edit" (click)="populateForm(ed)"></i>    
+                    </td>
+
+                    <td>
+                        <i class="far fa-trash-alt fa-lg text-danger" (click)="onDelete(ed.id)" ></i>    
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 

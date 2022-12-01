@@ -29,11 +29,16 @@ namespace CpkTest
         {
             services.AddControllers();
 
-            services.AddDbContext<EmployeeDetailContext>(options =>
+            /*services.AddDbContext<EmployeeDetailContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CosStr")));
 
             services.AddDbContext<DepartmentDetailContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("CosStr")));
+            */
+
+            services.AddDbContext<Context>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("CosStr")));
+
 
             services.AddCors();
 

@@ -1,11 +1,15 @@
+import { DepartmentDetail } from "./department-detail.model";
+
 export class EmployeeDetail {
-    iD:number=0;
+    id:Number=0;
     firstName:string='';
     lastName:string='';
     gender:string='';
-    dOB:string='01/01/2000';
+    dOB:Date=new Date(1980,1,1);
     departmentId:number=0;
-    basicSalary:string='0';
+    //depList:DepartmentDetail[]=[];
+    depName:string='';
+    basicSalary:number=0;
 
     
 }

@@ -23,10 +23,19 @@ namespace CpkTest.Models
         public DateTime DOB { get; set; }
         public int DepartmentId { get; set; }
 
+        [NotMapped]
+        public string DepName { get; set; }
+
+        /*[NotMapped]
+        public List<Department> DepList { get; set; }
+        */
         [Column(TypeName = "decimal(18,2)")]
         
         public decimal BasicSalary { get; set; }
 
-
+        public Employee()
+        {
+          //  DepList = new List<Department>();
+        }
     }
 }

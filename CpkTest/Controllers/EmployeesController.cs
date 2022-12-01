@@ -13,18 +13,53 @@ namespace CpkTest.Controllers
     [ApiController]
     public class EmployeesController : ControllerBase
     {
-        private readonly EmployeeDetailContext _context;
+        //private readonly EmployeeDetailContext _context;
+        private readonly Context _context;
 
-        public EmployeesController(EmployeeDetailContext context)
+
+        public EmployeesController(Context context)
         {
             _context = context;
+            
         }
 
         // GET: api/Employees
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployeeDetails()
         {
-            return await _context.EmployeeDetails.ToListAsync();
+
+            var l = (_context.EmployeeDetails.Join(
+                    _context.DepartmentDetails,
+                    emp => emp.DepartmentId,
+                    dep => dep.ID,
+                (emp, dep) => new
+                {
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName,
+                    Gender = emp.Gender,
+                    DOB = emp.DOB,
+                    DepName = dep.DepartmentName,
+                    BasicSalary = emp.BasicSalary
+                }
+                ));
+
+            var l1 = await l.ToListAsync().ConfigureAwait(false);
+
+            return l1
+                .Select(r => new Employee()
+                {
+                    FirstName = r.FirstName,
+                    LastName = r.LastName,
+                    Gender = r.Gender,
+                    DOB = r.DOB,
+                    DepName = r.DepName,
+                    //DepList = _context.DepartmentDetails.ToList(),
+                    BasicSalary = r.BasicSalary
+                })
+                .ToList();
+
+            //return await _context.EmployeeDetails.ToListAsync();
+            //return await l;
         }
 
         // GET: api/Employees/5
@@ -84,6 +119,7 @@ namespace CpkTest.Controllers
 
             return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
         }
+
 
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]

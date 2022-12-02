@@ -1,5 +1,4 @@
-# CpkTestApp
-Employee Details App <br>
+# Employee Details App
 Author : CP Senadeera <br>
 Technical details :- <br>
 Backend : .NET Core 3.1 (Web API with CRUD operations) <br>
